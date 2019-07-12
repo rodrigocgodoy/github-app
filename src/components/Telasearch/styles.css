@@ -1,0 +1,46 @@
+span {
+    font-size: 30px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+}
+
+    span.github {
+        font-family: monaco, Consolas, "Lucida Console", monospace;
+        font-weight: normal;
+        font-style: normal;
+        margin-left: 15%
+    }
+    span.search {
+        font-family: Raleway;
+        font-weight: 200;
+        font-style: italic;
+    }
+
+.input-text {
+    width: 80%;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.4);
+    background-color: #fff;
+    border: none;
+    border-radius: 1px;
+    height: 30px;
+    padding: 0 0 0 5px;
+}
+
+.button-search {
+    background-color: #ac53f2;
+    border: none;
+    height: 30px;
+    width: 50px;
+    border-radius: 1px;
+    cursor: pointer;
+}
+    .button-search img {
+        width: 20px;
+    }
+
+.text, .search {
+    margin: 25px 10px 0 0;
+    line-height: 30px
+}
