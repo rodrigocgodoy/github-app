@@ -62,7 +62,7 @@ class Telasearch extends Component {
                                 <span className='search'>Search</span>
                             </div>
                             <div className='col-7 search'>
-                                <input type='text' value={textSearch} className='input-text' onChange={(e) => this.onChangeTextSearch(e)} />
+                                <input type='text' value={textSearch} className='input-text' onChange={(e) => this.onChangeTextSearch.bind(this)} />
                                 <button type='button' className='button-search' onClick={this.onClickButton.bind(this)}>
                                     <img src='../../images/search-Icon@3x.png' alt='pesquisar' />
                                 </button>
