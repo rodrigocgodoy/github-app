@@ -57,15 +57,23 @@ class Telasearch extends Component {
                 <div className='row'>
                     <div className='col-12'>
                         <div className='row'>
-                            <div className='col-4 text'>
-                                <span className='github'>Github&ensp;</span>
-                                <span className='search'>Search</span>
+                            <div className='col-3 text'>
+                                <div className='row'>
+                                    <div className='offset-2 col-8'>
+                                        <span className='github'>Github&ensp;</span>
+                                        <span className='search'>Search</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div className='col-7 search'>
-                                <input type='text' value={textSearch} className='input-text' onChange={(e) => this.onChangeTextSearch.bind(this)} />
-                                <button type='button' className='button-search' onClick={this.onClickButton.bind(this)}>
-                                    <img src='../../images/search-Icon@3x.png' alt='pesquisar' />
-                                </button>
+                            <div className='col-8 search'>
+                                <div className='row'>
+                                    <div className='offset-2 col-5'>
+                                        <input type='text' value={textSearch} className='input-text' onChange={(e) => this.onChangeTextSearch.bind(this)} />
+                                        <button type='button' className='button-search' onClick={this.onClickButton.bind(this)}>
+                                            <img src='../../images/search-Icon@3x.png' alt='pesquisar' />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {

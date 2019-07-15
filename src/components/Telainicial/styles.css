@@ -12,7 +12,7 @@ span {
 
     span.github {
         font-family: monaco, Consolas, "Lucida Console", monospace;
-        font-weight: normal;
+        font-weight: 200;
         font-style: normal;
     }
     span.search {
