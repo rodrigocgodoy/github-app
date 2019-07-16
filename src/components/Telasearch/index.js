@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import api from '../../services/api';
-import { Link } from 'react-router-dom'
 
 import './styles.css'
 import Result from '../Result'
 import Error from '../Error'
+
+import {Row, Col} from '../layout/Grid'
 
 class Telasearch extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class Telasearch extends Component {
         this.state = {
             user: [],
             repos: [],
+            status: '',
             textSearch: this.props.match.params.user,
         }
         this.onChangeTextSearch = this.onChangeTextSearch.bind(this);
@@ -23,11 +25,11 @@ class Telasearch extends Component {
 
     componentDidMount() {
         this.loadUser()
-        this.render()
     }
 
-    onChangeTextSearch = (event) => {
+    onChangeTextSearch(event){
         this.setState({
+            ...this.state,
             textSearch: event.target.value
         })
         console.log("onChange: " + this.state.textSearch)
@@ -40,13 +42,30 @@ class Telasearch extends Component {
 
     loadUser = async () => {
         const user = this.state.textSearch
+        api.get(`/users/${user}?=a2a872a074955ff5991e&=657c3fc245570766906f1dec2f22f49ef99f897f`)
+            .then(e => this.setState({
+                ...this.state,
+                user: e.data,
+                status: e.request.status
+            }, console.log(e.request.status)))
+            .catch( error => this.setState({
+                ...this.state,
+                user: [],
+                status: error.request.status
+            }, console.log(error.request.status)))
+        // api.get(`/users/${user}/repos?=a2a872a074955ff5991e&=657c3fc245570766906f1dec2f22f49ef99f897f`)
+        //     .then(e => this.setState({
+        //         ...this.state,
+        //         repos: e.data,
+        //         status: 202
+        //     }, console.log(e.request.status)))
+        //     .catch( error => this.setState({
+        //         ...this.state,
+        //         user: [],
+        //         status: error.request.status
+        //     }, console.log(error.request.status)))
         console.log("loadUser: " + user)
-        const userData = await api.get(`/users/${user}`)
-        const reposData = await api.get(`/users/${user}/repos`)
-        this.setState({
-            user: userData.data,
-            repos: reposData.data
-        })
+        
     }
 
     render() {
@@ -54,38 +73,35 @@ class Telasearch extends Component {
 
         return (
             <div className='container-fluid'>
-                <div className='row'>
-                    <div className='col-12'>
-                        <div className='row'>
-                            <div className='col-3 text'>
-                                <div className='row'>
-                                    <div className='offset-2 col-8'>
+                <Row>
+                    <Col cols='12 12 12 12'>
+                        <Row>
+                            <Col cols='12 12 12 4' outherCss='text'>
+                                <Row>
+                                    <Col cols='12 12 8 8' off='0 0 1 1' outherCss='textCol'>
                                         <span className='github'>Github&ensp;</span>
                                         <span className='search'>Search</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-8 search'>
-                                <div className='row'>
-                                    <div className='offset-2 col-5'>
-                                        <input type='text' value={textSearch} className='input-text' onChange={(e) => this.onChangeTextSearch.bind(this)} />
-                                        <button type='button' className='button-search' onClick={this.onClickButton.bind(this)}>
+                                    </Col>
+                                </Row>                                
+                            </Col>
+                            <Col cols='12 12 12 5' off='0 0 0 1' outherCss='search'>
+                                <Row>
+                                    <Col cols='12 12 8 8' off='0 0 1 1'>
+                                        <input type='text' value={textSearch} className='input-text' onChange={this.onChangeTextSearch} />
+                                        <button type='button' className='button-search' onClick={this.onClickButton}>
                                             <img src='../../images/search-Icon@3x.png' alt='pesquisar' />
                                         </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
                         {
-
                             user.login === undefined ? 
                                 <Error /> : 
                                 <Result user={user} repos={repos}/>
                         }
-                        
-                        
-                    </div>
-                </div>
+                    </Col>
+                </Row>
             </div>
         )
     }

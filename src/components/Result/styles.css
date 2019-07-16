@@ -1,3 +1,47 @@
-h1 {
-    color: #000
+.user {
+    padding: 5% 0 0 5%;
+}
+
+.user span {
+    width: 280px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    font-family: Raleway;
+}
+
+    .user .name {
+        height: 40px;
+        font-size: 35px;
+        color: #000000;
+    }
+
+    .user .login {
+        height: 25px;
+        font-size: 20px;
+        color: #594E42;
+    }
+
+.user .divInfo {
+    padding-top: 20px
+}
+
+    .user .info {
+        height: 22px;
+        font-size: 20px;
+        color: #594E42;
+    }
+
+    .user .iconInfo {
+        width: 24px;
+        height: 24px;
+    }
+
+.user .avatar {
+    width: 280px;
+    height: 280px;
+    border-radius: 2px;
+    box-shadow: 0 0 4px NaNpx rgba(0, 0, 0, 0.4);
 }

@@ -13,15 +13,39 @@ class Result extends Component {
 
         return (
             <div className='row'>
-                <div className='col-5'>
+                <div className='col-2 user'>
                     {
-                        user.name == null ? 'Sem nome' : (
-                        <h1>{user.name}</h1>)
+                        user.avatar_url == null ? '' : (
+                            <img src={user.avatar_url} className='avatar' alt="Avatar"/>
+                        )
                     }
+                    <br/>
                     {
-                        user.login == null ? 'Sem login' : (
-                        <h1>{user.login}</h1>)
+                        user.name == null ? '' : (
+                            <span className='name'>{user.name}</span>
+                        )
                     }
+                    <br/>
+                    {
+                        user.login == null ? '' : (
+                            <span className='login'>{user.login}</span>
+                        )
+                    }
+                    <br/>
+                    <div className='divInfo'>
+                        {
+                            user.bio == null ? '' : (
+                                <span className='info'>{user.bio}</span>
+                            )
+                        }
+                        <br/>
+                        {
+                            user.blog == null ? '' : (
+                                <><img src='../../images/followers-icon.png' alt='Followers' className='íconInfo'/><span className='info'>{user.blog}</span></>
+                            )
+                        }
+
+                    </div>
                 </div>
                 <div className='col-7'>
 
