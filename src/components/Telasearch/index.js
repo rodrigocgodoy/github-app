@@ -41,8 +41,11 @@ class Telasearch extends Component {
     }
 
     loadUser = async () => {
+        const clientID = 'a2a872a074955ff5991e'
+        const clientSecret = '657c3fc245570766906f1dec2f22f49ef99f897f'
+        
         const user = this.state.textSearch
-        api.get(`/users/${user}?=a2a872a074955ff5991e&=657c3fc245570766906f1dec2f22f49ef99f897f`)
+        api.get(`/users/${user}?=${clientID}&=${clientSecret}`)
             .then(e => this.setState({
                 ...this.state,
                 user: e.data,
@@ -55,7 +58,7 @@ class Telasearch extends Component {
             }, console.log(error.request.status)))
 
             //https://developer.github.com/v3/repos/
-        api.get(`/users/${user}/repos?stargazers_count=desc&=a2a872a074955ff5991e&=657c3fc245570766906f1dec2f22f49ef99f897f`)
+        api.get(`/users/${user}/repos?=${clientID}&=${clientSecret}&direction={'watchers':'desc'}`)
             .then(e => this.setState({
                 ...this.state,
                 repos: e.data,

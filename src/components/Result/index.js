@@ -44,45 +44,43 @@ class Result extends Component {
                         {
                             user.bio !== null 
                                 ? <span className='info'><i className='far fa-bookmark'></i>&ensp; {user.bio}</span>
-                                : <span className='info'><i className='far fa-bookmark'></i>&ensp;&ensp;Sem e-mail</span>
+                                : <span className='info'><i className='far fa-bookmark'></i>&ensp; Sem biografia</span>
                         }
                         <br/>
                         {
                             user.followers !== null 
                                 ? <span className='info'><i className='fas fa-user-check'></i>&ensp;{user.followers}</span>
-                                : <span className='info'><i className='fas fa-user-check'></i>&ensp;&ensp;Sem e-mail</span>
+                                : <span className='info'><i className='fas fa-user-check'></i>&ensp;</span>
                         }
                         <br/>
                         {
                             user.following !== null 
                                 ? <span className='info'><i className='fas fa-user-plus'></i>&ensp;{user.following}</span>
-                                : <span className='info'><i className='fas fa-user-plus'></i>&ensp;&ensp;Sem e-mail</span>
+                                : <span className='info'><i className='fas fa-user-plus'></i>&ensp;</span>
                         }
 
                     </div>
                 </Col>
                 <Col cols='12 12 8 8' outherCss='listaRepos'>
-                    <div className='col-8 listaRepos'>
-                            {this.props.repos.map(e => (
-                                <div key={e.id}>
-                                    <span className='repo-name' >
-                                        {e.name}
-                                    </span>
-                                    <br/>
-                                    {
-                                        e.description !== null
-                                            ? <span className='repo-description'> {e.description} </span>
-                                            : <span className='repo-description'> Sem descrição </span>
-                                    }
-                                    <br/>
-                                    <span className='repo-star'>
-                                        <i className='far fa-star'></i>
-                                        {e.stargazers_count}
-                                    </span>
-                                    <br/><br/><br/>
-                                </div>
-                            ))}
-                    </div>
+                    {this.props.repos.map(e => (
+                        <div key={e.id}>
+                            <span className='repo-name' >
+                                <a href={e.html_url} target='blank'>{e.name}</a>
+                            </span>
+                            <br/>
+                            {
+                                e.description !== null
+                                    ? <span className='repo-description'> {e.description} </span>
+                                    : <span className='repo-description'> Sem descrição </span>
+                            }
+                            <br/>
+                            <span className='repo-star'>
+                                <i className='far fa-star'></i>
+                                {e.stargazers_count}
+                            </span>
+                            <br/><br/><br/>
+                        </div>
+                    ))}
                 </Col>
             </Row>
         )

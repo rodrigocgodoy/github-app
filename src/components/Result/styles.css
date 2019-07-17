@@ -58,6 +58,10 @@
     letter-spacing: normal;
     color: #ac53f2;
 }
+.repo-name a {
+    text-decoration: none;
+    color: #ac53f2;
+}
 
 .repo-description {
     width: 600px;
