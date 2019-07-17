@@ -11,7 +11,7 @@ class Result extends Component {
 
     render() {
         
-        const { user } = this.state
+        const { user, repos } = this.props
 
         return (
             <Row>
@@ -62,7 +62,7 @@ class Result extends Component {
                     </div>
                 </Col>
                 <Col cols='12 12 8 8' outherCss='listaRepos'>
-                    {this.props.repos.map(e => (
+                    {repos.map(e => (
                         <div key={e.id}>
                             <span className='repo-name' >
                                 <a href={e.html_url} target='blank'>{e.name}</a>
