@@ -53,17 +53,17 @@ class Telasearch extends Component {
                 user: [],
                 status: error.request.status
             }, console.log(error.request.status)))
-        // api.get(`/users/${user}/repos?=a2a872a074955ff5991e&=657c3fc245570766906f1dec2f22f49ef99f897f`)
-        //     .then(e => this.setState({
-        //         ...this.state,
-        //         repos: e.data,
-        //         status: 202
-        //     }, console.log(e.request.status)))
-        //     .catch( error => this.setState({
-        //         ...this.state,
-        //         user: [],
-        //         status: error.request.status
-        //     }, console.log(error.request.status)))
+        api.get(`/users/${user}/repos?stargazers_count=desc&=a2a872a074955ff5991e&=657c3fc245570766906f1dec2f22f49ef99f897f`)
+            .then(e => this.setState({
+                ...this.state,
+                repos: e.data,
+                status: 202
+            }, console.log(e.data)))
+            .catch( error => this.setState({
+                ...this.state,
+                user: [],
+                status: error.request.status
+            }, console.log(error.request.status)))
         console.log("loadUser: " + user)
         
     }
@@ -74,34 +74,30 @@ class Telasearch extends Component {
         return (
             <div className='container-fluid'>
                 <Row>
-                    <Col cols='12 12 12 12'>
+                    <Col cols='12 12 3 3'>
                         <Row>
-                            <Col cols='12 12 12 4' outherCss='text'>
-                                <Row>
-                                    <Col cols='12 12 8 8' off='0 0 1 1' outherCss='textCol'>
-                                        <span className='github'>Github&ensp;</span>
-                                        <span className='search'>Search</span>
-                                    </Col>
-                                </Row>                                
+                            <Col cols='12 12 12 12' off='0 0 0 0' outherCss='text'>
+                                <span className='github'>Github&ensp;</span>
+                                <span className='search'>Search</span>
                             </Col>
-                            <Col cols='12 12 12 5' off='0 0 0 1' outherCss='search'>
-                                <Row>
-                                    <Col cols='12 12 8 8' off='0 0 1 1'>
-                                        <input type='text' value={textSearch} className='input-text' onChange={this.onChangeTextSearch} />
-                                        <button type='button' className='button-search' onClick={this.onClickButton}>
-                                            <img src='../../images/search-Icon@3x.png' alt='pesquisar' />
-                                        </button>
-                                    </Col>
-                                </Row>
+                        </Row>                                
+                    </Col>
+                    <Col cols='12 12 8 8'>
+                        <Row>
+                            <Col cols='12 12 12 12' off='0 0 0 0' outherCss='search'>
+                                <input type='text' value={textSearch} className='input-text' onChange={this.onChangeTextSearch} />
+                                <button type='button' className='button-search' onClick={this.onClickButton}>
+                                    <img src='../../images/search-Icon@3x.png' alt='pesquisar' />
+                                </button>
                             </Col>
                         </Row>
-                        {
-                            user.login === undefined ? 
-                                <Error /> : 
-                                <Result user={user} repos={repos}/>
-                        }
                     </Col>
                 </Row>
+                {
+                    user.login !== undefined 
+                    ? <Result user={user} repos={repos}/>
+                    : <Error /> 
+                }
             </div>
         )
     }
