@@ -41,8 +41,11 @@ class Telasearch extends Component {
     }
 
     loadUser = async () => {
-        const clientID = 'a2a872a074955ff5991e'
-        const clientSecret = '657c3fc245570766906f1dec2f22f49ef99f897f'
+        // const clientID = 'a2a872a074955ff5991e'
+        // const clientSecret = '657c3fc245570766906f1dec2f22f49ef99f897f'
+        const clientID = process.env.REACT_APP_CLIENT_ID
+        const clientSecret = process.env.REACT_APP_CLIENT_SECRECT
+        console.log(clientID)
         
         const user = this.state.textSearch
         api.get(`/users/${user}?=${clientID}&=${clientSecret}`)
