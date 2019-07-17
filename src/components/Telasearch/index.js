@@ -53,6 +53,8 @@ class Telasearch extends Component {
                 user: [],
                 status: error.request.status
             }, console.log(error.request.status)))
+
+            //https://developer.github.com/v3/repos/
         api.get(`/users/${user}/repos?stargazers_count=desc&=a2a872a074955ff5991e&=657c3fc245570766906f1dec2f22f49ef99f897f`)
             .then(e => this.setState({
                 ...this.state,
