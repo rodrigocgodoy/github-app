@@ -19,19 +19,19 @@ class Result extends Component {
                     {
                         user.avatar_url !== null ? (
                             <img src={user.avatar_url} className='avatar' alt="Avatar"/>
-                        ) : ''
+                        ) : <span className='name'>Sem Foto</span>
                     }
                     <br/>
                     {
                         user.name !== null ? (
                             <span className='name'>{user.name}</span>
-                        ) : ''
+                        ) : <span className='name'>Sem nome</span>
                     }
                     <br/>
                     {
                         user.login !== null ? (
                             <span className='login'>{user.login}</span>
-                        ) : ''
+                        ) : <span className='name'>Sem user</span>
                     }
                     <br/>
                     <div className='divInfo'>
