@@ -89,6 +89,10 @@
     color: grey;
 }
 
+.fas, .far {
+    color: #ac53f2;
+}
+
 /* .listaRepos {
     padding: 5% 0 0 0;
 } */

@@ -19,8 +19,6 @@ class Telasearch extends Component {
         this.onChangeTextSearch = this.onChangeTextSearch.bind(this);
         this.onClickButton = this.onClickButton.bind(this);
         this.loadUser = this.loadUser.bind(this);
-
-        console.log("construtor: " + this.state.textSearch)
     }
 
     componentDidMount() {
@@ -32,12 +30,10 @@ class Telasearch extends Component {
             ...this.state,
             textSearch: event.target.value
         })
-        console.log("onChange: " + this.state.textSearch)
     }
 
     onClickButton = () => {
         this.loadUser()
-        console.log("onClick: " + this.state.textSearch)
     }
 
     loadUser = async () => {
@@ -45,7 +41,6 @@ class Telasearch extends Component {
         // const clientSecret = '657c3fc245570766906f1dec2f22f49ef99f897f'
         const clientID = process.env.REACT_APP_CLIENT_ID
         const clientSecret = process.env.REACT_APP_CLIENT_SECRECT
-        console.log(clientID)
         
         const user = this.state.textSearch
         api.get(`/users/${user}?=${clientID}&=${clientSecret}`)
@@ -53,12 +48,12 @@ class Telasearch extends Component {
                 ...this.state,
                 user: e.data,
                 status: e.request.status
-            }, console.log(e.request.status)))
+            }))
             .catch( error => this.setState({
                 ...this.state,
                 user: [],
                 status: error.request.status
-            }, console.log(error.request.status)))
+            }))
 
             //https://developer.github.com/v3/repos/
         api.get(`/users/${user}/repos?=${clientID}&=${clientSecret}&direction={'watchers':'desc'}`)
@@ -66,14 +61,12 @@ class Telasearch extends Component {
                 ...this.state,
                 repos: e.data,
                 status: 202
-            }, console.log(e.data)))
+            }))
             .catch( error => this.setState({
                 ...this.state,
                 user: [],
                 status: error.request.status
-            }, console.log(error.request.status)))
-        console.log("loadUser: " + user)
-        
+            }))
     }
 
     render() {

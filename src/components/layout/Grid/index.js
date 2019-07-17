@@ -47,9 +47,20 @@ export class Col extends Component {
 }
 
 export class Row extends Component {
+    
+    outherCss(classes) {
+        const classe = classes ? classes.split(' ') : []
+        let OutherClasses = ''
+
+        classe.map( (elem) => OutherClasses += elem)
+
+        return classes
+    }
+
     render() {
+        const outherCss = this.outherCss(this.props.outherCss || '')
         return (
-            <div className='row'>
+            <div className={`row ${outherCss}`}>
                 {this.props.children}
             </div>
         )

@@ -49,14 +49,14 @@ class Result extends Component {
                         <br/>
                         {
                             user.followers !== null 
-                                ? <span className='info'><i className='fas fa-user-check'></i>&ensp;{user.followers}</span>
-                                : <span className='info'><i className='fas fa-user-check'></i>&ensp;</span>
+                                ? <span className='info'><i className='fas fa-star'></i>&ensp;{user.followers}</span>
+                                : <span className='info'><i className='fas fa-star'></i>&ensp;</span>
                         }
                         <br/>
                         {
                             user.following !== null 
-                                ? <span className='info'><i className='fas fa-user-plus'></i>&ensp;{user.following}</span>
-                                : <span className='info'><i className='fas fa-user-plus'></i>&ensp;</span>
+                                ? <span className='info'><i className='far fa-star'></i>&ensp;{user.following}</span>
+                                : <span className='info'><i className='far fa-star'></i>&ensp;</span>
                         }
 
                     </div>
