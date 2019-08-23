@@ -3,27 +3,34 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 50vh 50vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 5vh 5vh 90vh;
   grid-template-areas:
-    "logo logo logo"
-    "inputSearch inputSearch inputSearch";
+    "logo inputSearch"
+    
+    "content content";
+    padding-top: 15px;
 `;
 
 export const Logo = styled.div`
   grid-area: logo;
-  justify-self: center;
+  justify-self: left;
+  padding: 15px 0 0 25px;
   align-self: center;
 `;
 
 export const InputSearch = styled.div`
   grid-area: inputSearch;
-  justify-self: center;
+  justify-self: left;
   align-self: flex-start;
 `;
 
+export const Content = styled.div`
+    grid-area: content;
+`
+
 export const Img = styled.img`
-  width: 500px;
+  width: 200px;
 `;
 
 export const Input = styled.input`
