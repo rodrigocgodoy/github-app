@@ -8,17 +8,33 @@ import { FaSearch } from "react-icons/all";
 import { Container, Logo, InputSearch, Content, Img, Input, Button } from "./styles";
 
 class Telasearch extends Component {
-    state = {
-        user: [],
-        repos: [],
-        status: '',
-        loading: true,
-        textSearch: this.props.match.params.user,
+    constructor(props) {
+        super(props)
+        this.state = {
+            user: [],
+            repos: [],
+            status: '',
+            loading: 0,
+            textSearch: this.props.match.params.user,
+        }
+        this.onChangeTextSearch = this.onChangeTextSearch.bind(this);
+        this.onClickButton = this.onClickButton.bind(this);
+        // this.showSpiner = this.showSpiner.bind(this);
+        // this.hideSipner = this.hideSipner.bind(this);
     }
 
-    componentDidMount() {
-        this.showSpiner()
-        this.loadUser()
+    async componentDidMount() {
+        await this.setState({
+            ...this.state,
+            loading: 1
+        })
+
+        await this.loadUser()
+
+        await this.setState({
+            ...this.state,
+            loading: 0
+        })
     }
 
     onChangeTextSearch(event){
@@ -32,20 +48,6 @@ class Telasearch extends Component {
         this.loadUser()
     }
 
-    showSpiner = () => {
-        this.setState({
-            ...this.state,
-            loading: true
-        })
-    }
-
-    hideSipner = () => {
-        this.setState({
-            ...this.state,
-            loading: false
-        })
-    }
-
     loadUser = async () => {
         // const clientID = 'a2a872a074955ff5991e'
         // const clientSecret = '657c3fc245570766906f1dec2f22f49ef99f897f'
@@ -56,7 +58,7 @@ class Telasearch extends Component {
         const userData = api.get(`/users/${user}?=${clientID}&=${clientSecret}`)
         const reposData = api.get(`/users/${user}/repos?=${clientID}&=${clientSecret}&direction={'watchers':'desc'}`)
 
-        Promise.all([
+        await Promise.all([
             userData, reposData
         ]).then((values) => {
             this.setState({
@@ -71,7 +73,7 @@ class Telasearch extends Component {
                 ...this.state,
                 user: [],
                 repos: [],
-                status: error.request.status
+                status: 404
             })
         })
     }
@@ -110,19 +112,17 @@ class Telasearch extends Component {
                     )}
                 </InputSearch>
                 <Content>
-                    <Loading />
-                    {/* {
-                        loading === true 
+                    {/* <h1>{loading}</h1> */}
+                    {
+                        loading === 1
                             ? <Loading /> 
-                            : user.login !== undefined 
-                                ? <Result user={user} repos={repos}/>
-                                : <Error />
-                    } */}
-                    {/* {
-                        user.login !== undefined 
-                        ? <Result user={user} repos={repos}/>
-                        : <Error /> 
-                    } */}
+                            : null 
+                    }
+                    {
+                        !!user && user.login !== undefined 
+                            ? <Result user={user} repos={repos}/>
+                            : <Error />
+                    }
                 </Content>
             </Container>
         )

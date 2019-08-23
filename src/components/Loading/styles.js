@@ -7,13 +7,11 @@ export const Container = styled.div`
   grid-template-rows: 100vh;
   grid-template-areas:
     "content";
-    // padding-top: 15px;
 `;
 
 export const Content = styled.div`
     grid-area: content;
     justify-self: center;
-    // padding: 15px 0 0 25px;
     align-self: center;
 `
 

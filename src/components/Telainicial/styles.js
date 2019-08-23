@@ -61,7 +61,8 @@ export const Button = styled.button`
   color: #fff;
   height: 40px;
   width: 65px;
-  font-size: 15px;
+  // mudei o font size de 15 para 14
+  font-size: 14px;
   cursor: pointer;
 
   &&:hover {

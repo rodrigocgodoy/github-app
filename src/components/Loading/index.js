@@ -5,7 +5,7 @@ export default function Loading(props) {
     return(
         <Container>
             <Content>
-                <Img src='/images/loading4.gif'/>
+                <Img src='/images/loading5.gif'/>
             </Content>
         </Container>
     )
