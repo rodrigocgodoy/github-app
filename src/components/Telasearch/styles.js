@@ -1,34 +1,34 @@
 import styled from "styled-components";
 // import styled, { css } from "styled-components";
 
+const colorRoxo = "#8A2BE2";
+
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 5vh 5vh 90vh;
   grid-template-areas:
-    "logo inputSearch"
-    
-    "content content";
-    padding-top: 15px;
+    "logo inputSearch inputSearch"
+    "content content content";
+  padding-top: 35px;
 `;
 
 export const Logo = styled.div`
   grid-area: logo;
-  justify-self: left;
-  padding: 15px 0 0 25px;
-  align-self: center;
+  justify-self: center;
+  margin-left: -100px;
 `;
 
 export const InputSearch = styled.div`
   grid-area: inputSearch;
-  justify-self: left;
-  align-self: flex-start;
-  margin-left: 50px;
+  justify-self: center;
+  margin-left: -120px;
+  padding-top: 15px;
 `;
 
 export const Content = styled.div`
-    grid-area: content;
-`
+  grid-area: content;
+`;
 
 export const Img = styled.img`
   width: 200px;
@@ -38,8 +38,8 @@ export const Input = styled.input`
   background: transparent;
   border: none;
   border-radius: 3px 0 0 3px;
-  border: 2px solid #ac53f2;
-  color: #ac53f2;
+  border: 2px solid ${colorRoxo};
+  color: ${colorRoxo};
   font-weight: bolder;
   font-size: 15px;
   height: 34px;
@@ -48,7 +48,7 @@ export const Input = styled.input`
 
   &&::placeholder {
     font-size: 15px;
-    color: #ac53f2;
+    color: ${colorRoxo};
   }
   &&:hover {
     outline: none;
@@ -63,7 +63,7 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   /* padding-top: 500px; */
-  background-color: #ac53f2;
+  background-color: ${colorRoxo};
   border-radius: 0 3px 3px 0;
   border: none;
   color: #fff;
@@ -74,7 +74,7 @@ export const Button = styled.button`
   cursor: pointer;
 
   &&:hover {
-    background-color: #ac53f2;
+    background-color: ${colorRoxo};
     opacity: 0.8;
   }
 `;

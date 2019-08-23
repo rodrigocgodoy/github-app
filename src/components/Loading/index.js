@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container, Content, Img } from './styles';
 
 export default function Loading(props) {

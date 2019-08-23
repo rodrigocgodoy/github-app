@@ -1,89 +1,145 @@
-import React, { Component } from 'react'
-import { FaEnvelope, GoRepoClone, FaStar, FaRegStar, MdDescription } from "react-icons/all";
-import { ContainerFilho, User, Repos, Img, Texto, HeaderInfo, InfoUser, InfoRepos, HeaderRepo, InfoRepo } from "./styles";
+import React, { Component } from "react";
+import {
+  FaEnvelope,
+  GoRepoClone,
+  FaStar,
+  FaRegStar,
+  MdDescription,
+  FaLocationArrow,
+  MdWeb
+} from "react-icons/all";
+import {
+  ContainerFilho,
+  User,
+  Repos,
+  Img,
+  Texto,
+  HeaderInfo,
+  InfoUser,
+  InfoRepos,
+  InfoRepo,
+  ButtonVisit
+} from "./styles";
 
 class Result extends Component {
-    state = {
-        user: this.props.user
-    }
+  state = {
+    user: this.props.user
+  };
 
-    render() {
-        
-        const { user, repos } = this.props
+  render() {
+    const { user, repos } = this.props;
 
-        return (
-            <ContainerFilho>
-                <User>
-                    <HeaderInfo />
-                    <InfoUser>
-                        {
-                            user.avatar_url !== null ? (
-                                <Img src={user.avatar_url} className={`Avatar ${user.login}`}/>
-                            ) : <Texto>Sem Foto</Texto>
-                        }
+    return (
+      <ContainerFilho>
+        <User>
+          <HeaderInfo />
+          <InfoUser>
+            {user.avatar_url !== null ? (
+              <a href={user.html_url} target="blank">
+                <Img src={user.avatar_url} className={`Avatar ${user.login}`} />
+              </a>
+            ) : (
+              ""
+            )}
 
-                        {
-                            user.name !== null ? (
-                                <Texto fontSize='30px'>{user.name}</Texto>
-                            ) : <Texto fontSize='30px'>Sem nome</Texto>
-                        }
-                        {
-                            user.login !== null ? (
-                                <Texto fontSize='20px'>{user.login}</Texto>
-                            ) : <Texto fontSize='20px'>Sem user</Texto>
-                        }
-                        {
-                            user.email !== null
-                            ? <Texto><FaEnvelope/>&ensp;{user.email}</Texto>
-                            : <Texto><FaEnvelope/>&ensp;Sem e-mail</Texto> 
-                        }
-                        <br/>
-                        {
-                            user.bio !== null 
-                                ? <Texto><GoRepoClone/>&ensp; {user.bio}</Texto>
-                                : <Texto><GoRepoClone/>&ensp; Sem biografia</Texto>
-                        }
-                        <br/>
-                        {
-                            user.followers !== null 
-                                ? <Texto><FaStar/>&ensp;{user.followers}</Texto>
-                                : <Texto><FaStar/>&ensp;</Texto>
-                        }
-                        <br/>
-                        {
-                            user.following !== null 
-                                ? <Texto><FaRegStar/>&ensp;{user.following}</Texto>
-                                : <Texto><FaRegStar/>&ensp;</Texto>
-                        }
-                    </InfoUser>
-                </User>
-                <Repos>
-                    <HeaderInfo />
-                    <InfoRepos>
-                        {repos.map(e => (
-                            <>
-                                <HeaderRepo key={e.id}>
-                                    <Texto><a href={e.html_url} target='blank'>{e.name}</a></Texto>
-                                </HeaderRepo>
+            <ButtonVisit>
+              <span>Visitar perfil</span>
+            </ButtonVisit>
+            {user.name !== null ? (
+              <Texto
+                fontSize="30px"
+                // borderBottom="border-bottom: 2px solid #663399;"
+              >
+                {user.name}
+              </Texto>
+            ) : (
+              <Texto fontSize="30px">Sem nome</Texto>
+            )}
 
-                                <InfoRepo>
-                                    {
-                                        e.description !== null
-                                            ? <Texto> <MdDescription/> {e.description} </Texto>
-                                            : <Texto> <MdDescription/> Sem descrição </Texto>
-                                    }
-                                    <Texto className='repo-star'>
-                                        <i className='far fa-star'></i>
-                                        {e.stargazers_count}
-                                    </Texto>
-                                </InfoRepo>
-                            </>
-                        ))}
-                    </InfoRepos>
-                </Repos>
-            </ContainerFilho>
-        )
-    }
+            {user.login !== null ? (
+              <Texto fontSize="20px">{user.login}</Texto>
+            ) : (
+              ""
+            )}
+            {user.location !== null ? (
+              <Texto>
+                <FaLocationArrow />
+                &ensp;{user.location}
+              </Texto>
+            ) : (
+              ""
+            )}
+            {user.blog !== null ? (
+              <Texto>
+                <MdWeb />
+                &ensp;{user.blog}
+              </Texto>
+            ) : (
+              ""
+            )}
+            {user.email !== null ? (
+              <Texto>
+                <FaEnvelope />
+                &ensp;{user.email}
+              </Texto>
+            ) : (
+              ""
+            )}
+            {user.bio !== null ? (
+              <Texto>
+                <GoRepoClone />
+                &ensp; {user.bio}
+              </Texto>
+            ) : (
+              ""
+            )}
+            {user.followers !== null ? (
+              <Texto>
+                <FaStar />
+                &ensp;{user.followers}
+              </Texto>
+            ) : (
+              ""
+            )}
+            {user.following !== null ? (
+              <Texto>
+                <FaRegStar />
+                &ensp;{user.following}
+              </Texto>
+            ) : (
+              ""
+            )}
+          </InfoUser>
+        </User>
+        <Repos>
+          <HeaderInfo />
+          <InfoRepos>
+            {repos.map(e => (
+              <InfoRepo key={e.node_id}>
+                <Texto>
+                  <a href={e.html_url} target="blank">
+                    {e.name}
+                  </a>
+                </Texto>
+                <Texto>Linguagem: {e.language}</Texto>
+                {e.description !== null ? (
+                  <Texto>
+                    <MdDescription /> {e.description}{" "}
+                  </Texto>
+                ) : (
+                  ""
+                )}
+                <Texto>
+                  <FaRegStar />
+                  {e.stargazers_count}
+                </Texto>
+              </InfoRepo>
+            ))}
+          </InfoRepos>
+        </Repos>
+      </ContainerFilho>
+    );
+  }
 }
 
-export default Result
+export default Result;

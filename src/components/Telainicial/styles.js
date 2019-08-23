@@ -1,6 +1,8 @@
 import styled from "styled-components";
 // import styled, { css } from "styled-components";
 
+const colorRoxo = "#8A2BE2";
+
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -30,8 +32,8 @@ export const Input = styled.input`
   background: transparent;
   border: none;
   border-radius: 3px 0 0 3px;
-  border: 2px solid #ac53f2;
-  color: #ac53f2;
+  border: 2px solid ${colorRoxo};
+  color: ${colorRoxo};
   font-weight: bolder;
   font-size: 15px;
   height: 34px;
@@ -40,7 +42,7 @@ export const Input = styled.input`
 
   &&::placeholder {
     font-size: 15px;
-    color: #ac53f2;
+    color: ${colorRoxo};
   }
   &&:hover {
     outline: none;
@@ -55,7 +57,7 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   /* padding-top: 500px; */
-  background-color: #ac53f2;
+  background-color: ${colorRoxo};
   border-radius: 0 3px 3px 0;
   border: none;
   color: #fff;
@@ -66,7 +68,7 @@ export const Button = styled.button`
   cursor: pointer;
 
   &&:hover {
-    background-color: #ac53f2;
+    background-color: ${colorRoxo};
     opacity: 0.8;
   }
 `;
