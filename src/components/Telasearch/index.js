@@ -103,7 +103,7 @@ class Telasearch extends Component {
           <Input
             placeholder="Por favor, digite um username"
             type="text"
-            value={textSearch}
+            // value={textSearch}
             onChange={this.onChangeTextSearch}
           />
           {textSearch === "" ? (

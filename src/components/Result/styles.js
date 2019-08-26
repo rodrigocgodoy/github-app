@@ -1,9 +1,5 @@
 import styled from "styled-components";
-// import styled, { css } from "styled-components";
-
-// colors: BA73F2, ac53f2, 663399, #8A2BE2
-
-const colorRoxo = "#8A2BE2";
+import { colorRoxo, device } from "../layout/StylesDevice";
 
 export const ContainerFilho = styled.div`
   display: grid;
@@ -11,11 +7,24 @@ export const ContainerFilho = styled.div`
   grid-template-rows: 100%;
   grid-template-areas: "user repos";
   padding-top: 70px;
+
+  @media ${device.mobileS} {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50vh 50vh;
+    grid-template-areas:
+      "user"
+      "repos";
+    padding-top: 70px;
+  }
 `;
 
 export const User = styled.div`
   grid-area: user;
   margin-left: 25px;
+
+  @media ${device.mobileS} {
+    margin-left: 0;
+  }
 `;
 export const Repos = styled.div`
   grid-area: repos;
@@ -32,11 +41,14 @@ export const Img = styled.img`
     transform: translate(5px, 5px);
     box-shadow: 10px 10px 34px 0px rgba(0, 0, 0, 1);
   }
+  @media ${device.mobileS} {
+    margin-left: -5px;
+    width: 50%;
+  }
 `;
 
 export const Texto = styled.p`
   font-size: ${props => (props.fontSize ? props.fontSize : "15px")};
-  /* ${props => props.borderBottom} */
 `;
 
 export const HeaderInfo = styled.div`
@@ -65,21 +77,6 @@ export const InfoRepos = styled.div`
   padding: 10px 0 10px 5px;
 `;
 
-// export const HeaderRepo = styled.div`
-//   width: 99.3%;
-//   height: 35px;
-//   background-color: #fff;
-
-//   a {
-//     color: ${colorRoxo};
-//     text-decoration: none;
-//   }
-
-//   p {
-//     // padding: 10px;
-//   }
-// `;
-
 export const InfoRepo = styled.div`
   min-height: 35px;
   width: 97%;
@@ -95,6 +92,10 @@ export const InfoRepo = styled.div`
     transform: scale(1.1);
     transform: translate(5px, 5px);
     box-shadow: 10px 10px 34px 0px rgba(0, 0, 0, 0.75);
+
+    a button {
+      display: block;
+    }
 
     a {
       color: #fff;
@@ -116,6 +117,7 @@ export const ButtonVisit = styled.button`
   border: 2px solid #fff;
   border-radius: 10px;
   cursor: pointer;
+  ${props => (props.hide === "true" ? "display: none" : "")}
 
   &&:hover {
     background-color: ${colorRoxo};

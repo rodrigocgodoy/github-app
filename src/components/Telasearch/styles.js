@@ -1,7 +1,5 @@
 import styled from "styled-components";
-// import styled, { css } from "styled-components";
-
-const colorRoxo = "#8A2BE2";
+import { colorRoxo, device } from "../layout/StylesDevice";
 
 export const Container = styled.div`
   display: grid;
@@ -11,12 +9,50 @@ export const Container = styled.div`
     "logo inputSearch inputSearch"
     "content content content";
   padding-top: 35px;
+
+  @media ${device.mobileS} {
+    grid-template-columns: 1fr;
+    grid-template-rows: 100% 100% 100%;
+    grid-template-areas:
+      "logo"
+      "inputSearch"
+      "content";
+    padding-top: 5px;
+  }
+  @media ${device.mobileM} {
+    grid-template-columns: 1fr;
+    grid-template-rows: 5vh 5vh 90vh;
+    grid-template-areas:
+      "logo"
+      "inputSearch"
+      "content";
+    padding-top: 5px;
+  }
+  @media ${device.mobileL} {
+    grid-template-columns: 1fr;
+    grid-template-rows: 5vh 5vh 90vh;
+    grid-template-areas:
+      "logo"
+      "inputSearch"
+      "content";
+    padding-top: 5px;
+  }
 `;
 
 export const Logo = styled.div`
   grid-area: logo;
   justify-self: center;
   margin-left: -100px;
+
+  @media ${device.mobileS} {
+    margin-left: 0;
+  }
+  @media ${device.mobileM} {
+    margin-left: 0;
+  }
+  @media ${device.mobileL} {
+    margin-left: 0;
+  }
 `;
 
 export const InputSearch = styled.div`
@@ -24,6 +60,19 @@ export const InputSearch = styled.div`
   justify-self: center;
   margin-left: -120px;
   padding-top: 15px;
+
+  @media ${device.mobileS} {
+    padding-top: 30px;
+    margin-left: 0;
+  }
+  @media ${device.mobileM} {
+    padding-top: 30px;
+    margin-left: 0;
+  }
+  @media ${device.mobileL} {
+    padding-top: 30px;
+    margin-left: 0;
+  }
 `;
 
 export const Content = styled.div`
@@ -32,6 +81,15 @@ export const Content = styled.div`
 
 export const Img = styled.img`
   width: 200px;
+  @media ${device.mobileS} {
+    width: 150px;
+  }
+  @media ${device.mobileM} {
+    width: 160px;
+  }
+  @media ${device.mobileL} {
+    width: 180px;
+  }
 `;
 
 export const Input = styled.input`
@@ -59,6 +117,20 @@ export const Input = styled.input`
     &&::placeholder {
     }
   }
+
+  @media ${device.mobileS} {
+    font-size: 13px;
+    min-width: 150px;
+    margin-top: 5px;
+  }
+  @media ${device.mobileM} {
+    font-size: 14px;
+    min-width: 200px;
+  }
+  @media ${device.mobileL} {
+    font-size: 15px;
+    min-width: 200px;
+  }
 `;
 
 export const Button = styled.button`
@@ -76,5 +148,17 @@ export const Button = styled.button`
   &&:hover {
     background-color: ${colorRoxo};
     opacity: 0.8;
+  }
+
+  @media ${device.mobileS} {
+    font-size: 13px;
+    /* height: 40px;
+    margin-top: 2px; */
+  }
+  @media ${device.mobileM} {
+    font-size: 14px;
+  }
+  @media ${device.mobileL} {
+    font-size: 15px;
   }
 `;

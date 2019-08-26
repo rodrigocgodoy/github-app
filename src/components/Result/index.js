@@ -6,7 +6,8 @@ import {
   FaRegStar,
   MdDescription,
   FaLocationArrow,
-  MdWeb
+  MdWeb,
+  FaIndustry
 } from "react-icons/all";
 import {
   ContainerFilho,
@@ -41,10 +42,11 @@ class Result extends Component {
             ) : (
               ""
             )}
-
-            <ButtonVisit>
-              <span>Visitar perfil</span>
-            </ButtonVisit>
+            <a href={user.html_url} target="blank">
+              <ButtonVisit>
+                <span>Visitar perfil</span>
+              </ButtonVisit>
+            </a>
             {user.name !== null ? (
               <Texto
                 fontSize="30px"
@@ -65,6 +67,14 @@ class Result extends Component {
               <Texto>
                 <FaLocationArrow />
                 &ensp;{user.location}
+              </Texto>
+            ) : (
+              ""
+            )}
+            {user.company !== null ? (
+              <Texto>
+                <FaIndustry />
+                &ensp;{user.company}
               </Texto>
             ) : (
               ""
@@ -116,9 +126,9 @@ class Result extends Component {
           <InfoRepos>
             {repos.map(e => (
               <InfoRepo key={e.node_id}>
-                <Texto>
+                <Texto fontSize="20px">
                   <a href={e.html_url} target="blank">
-                    {e.name}
+                    {user.login} / {e.name}
                   </a>
                 </Texto>
                 <Texto>Linguagem: {e.language}</Texto>
@@ -133,6 +143,12 @@ class Result extends Component {
                   <FaRegStar />
                   {e.stargazers_count}
                 </Texto>
+
+                <a href={e.html_url} target="blank">
+                  <ButtonVisit hide="true">
+                    <span>Visitar repositório</span>
+                  </ButtonVisit>
+                </a>
               </InfoRepo>
             ))}
           </InfoRepos>

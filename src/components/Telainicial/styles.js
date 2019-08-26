@@ -1,7 +1,7 @@
 import styled from "styled-components";
 // import styled, { css } from "styled-components";
 
-const colorRoxo = "#8A2BE2";
+import { colorRoxo, device } from "../layout/StylesDevice";
 
 export const Container = styled.div`
   display: grid;
@@ -26,6 +26,16 @@ export const InputSearch = styled.div`
 
 export const Img = styled.img`
   width: 500px;
+
+  @media ${device.mobileS} {
+    width: 300px;
+  }
+  @media ${device.mobileM} {
+    width: 350px;
+  }
+  @media ${device.mobileL} {
+    width: 400px;
+  }
 `;
 
 export const Input = styled.input`
@@ -49,8 +59,26 @@ export const Input = styled.input`
   }
   &&:focus {
     outline: none;
+  }
+  @media ${device.mobileS} {
+    min-width: 200px;
 
     &&::placeholder {
+      font-size: 13px;
+    }
+  }
+  @media ${device.mobileM} {
+    min-width: 250px;
+
+    &&::placeholder {
+      font-size: 14px;
+    }
+  }
+  @media ${device.mobileL} {
+    min-width: 300px;
+
+    &&::placeholder {
+      font-size: 15px;
     }
   }
 `;
@@ -63,7 +91,7 @@ export const Button = styled.button`
   color: #fff;
   height: 40px;
   width: 65px;
-  // mudei o font size de 15 para 14
+  /* mudei o font size de 15 para 14 */
   font-size: 14px;
   cursor: pointer;
 
