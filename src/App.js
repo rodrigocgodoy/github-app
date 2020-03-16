@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
-import Favicon from 'react-favicon';
+import React from 'react';
+import { Provider } from 'react-redux';
 
-import Routes from './routes';
-import './styles.css'
+import Router from './routes';
+import store from './store';
+import GlobalStyle from './styles/global';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-          <Favicon url="../public/github_logo.ico" />
-        <Routes/>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <Provider store={store}>
+      <GlobalStyle />
+      <Router />
+    </Provider>
+  );
 }
 
 export default App;

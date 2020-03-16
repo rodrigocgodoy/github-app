@@ -1,16 +1,22 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-import Telainicial from './components/Telainicial'
-import Telasearch from './components/Telasearch'
+// import Character from './pages/Character';
+import Main from './pages/Main';
+import NotFound from './pages/NotFound';
 
-const Routes = () => (
+const Router = () => {
+  return (
     <BrowserRouter>
-        <Switch>
-            <Route exact path='/' component={Telainicial} />
-            <Route path='/search/:user' component={Telasearch} />
-        </Switch>
-    </BrowserRouter>
-)
+      <Switch>
+        <Route exact path="/" component={Main} />
+        {/* <Route path="/character/:characterId" component={Character} /> */}
 
-export default Routes
+        <Route path="/not-found" component={NotFound} />
+        <Redirect to="/not-found" />
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
+export default Router;
