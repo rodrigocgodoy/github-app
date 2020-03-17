@@ -20,5 +20,6 @@ export const Container = styled.div`
 
   img {
     height: 65%;
+    cursor: pointer;
   }
 `;
